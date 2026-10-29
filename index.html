@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morse Trainer BD — Learn Morse Code by Ear</title>
+<meta name="description" content="Free offline bilingual (Bangla/English) Morse code trainer: translator, listen & play, tap key, listen quiz, and full code chart.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>📻 Morse Trainer BD</h1>
+    <p data-i18n="tagline">Learn Morse code by ear — listen, tap, and quiz yourself.</p>
+  </div>
+  <button id="langBtn" class="lang-btn">বাংলা</button>
+</header>
+
+<main>
+  <section class="card" id="translatorCard">
+    <h2 data-i18n="translator">Translator</h2>
+    <div class="mode-row">
+      <button id="modeEncode" class="mode active" data-i18n="toMorse">Text → Morse</button>
+      <button id="modeDecode" class="mode" data-i18n="toText">Morse → Text</button>
+    </div>
+    <label for="transInput" data-i18n="textLabel">Text</label>
+    <textarea id="transInput" rows="3" placeholder="SOS"></textarea>
+    <label for="transOutput" data-i18n="morseLabel">Morse code</label>
+    <textarea id="transOutput" rows="3" readonly placeholder="... --- ..."></textarea>
+    <p id="transNote" class="note"></p>
+    <button id="copyBtn" class="primary" data-i18n="copy">Copy</button>
+  </section>
+
+  <section class="card" id="listenCard">
+    <h2 data-i18n="listen">Listen &amp; Play</h2>
+    <label for="playInput" data-i18n="textLabel">Text</label>
+    <input id="playInput" type="text" value="SOS" maxlength="120">
+    <div class="slider-row">
+      <label for="wpmRange"><span data-i18n="wpm">Speed (WPM)</span>: <strong id="wpmVal">18</strong></label>
+      <input id="wpmRange" type="range" min="5" max="40" step="1" value="18">
+    </div>
+    <button id="playBtn" class="primary" data-i18n="playText">Play this text</button>
+    <span id="playStatus" class="status"></span>
+  </section>
+
+  <section class="card" id="tapCard">
+    <h2 data-i18n="tapkey">Tap Key</h2>
+    <p class="hint" data-i18n="tapHint">Hold the key: quick tap = dot (•), long hold = dash (−). Pause to finish a letter.</p>
+    <button id="tapKey" data-i18n="tapKeyLabel">TAP KEY (or hold Space)</button>
+    <div class="tap-readout">
+      <div><span data-i18n="currentCode">Current code</span>: <strong id="tapCode">–</strong></div>
+      <div><span data-i18n="decoded">Decoded so far</span>: <strong id="tapDecoded">–</strong></div>
+    </div>
+    <button id="clearTap" class="secondary" data-i18n="clearTap">Clear</button>
+  </section>
+
+  <section class="card" id="quizCard">
+    <h2 data-i18n="quiz">Listen Quiz</h2>
+    <p class="hint" data-i18n="quizHint">Press Listen, then pick the letter you heard.</p>
+    <div class="stats">
+      <div><span data-i18n="score">Score</span>: <strong id="quizScore">0</strong></div>
+      <div><span data-i18n="streak">Streak</span>: <strong id="quizStreak">0</strong></div>
+      <div><span data-i18n="best">Best</span>: <strong id="quizBest">0</strong></div>
+    </div>
+    <button id="quizListen" class="primary" data-i18n="listenBtn">Listen</button>
+    <div id="quizOptions" class="options"></div>
+    <p id="quizFeedback" class="feedback"></p>
+    <button id="quizNext" class="secondary" data-i18n="newRound">Next letter</button>
+    <p class="hint" data-i18n="quizNote">Letters A–Z and digits 0–9 only.</p>
+  </section>
+
+  <section class="card" id="chartCard">
+    <h2 data-i18n="chart">Learn the Code</h2>
+    <div id="chartGrid" class="chart-grid"></div>
+  </section>
+</main>
+
+<footer>
+  <p data-i18n="footer">100% offline — all sound is generated on your device. Morse timing follows the standard PARIS convention. A learning tool, not a radio-licence trainer.</p>
+</footer>
+
+<script src="js/morse.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
